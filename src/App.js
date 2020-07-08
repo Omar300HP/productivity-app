@@ -16,10 +16,8 @@ import SideNavbar from "./components/SideNavbar/SideNavbar";
 
 import Home from "./routes/Home/Home";
 
-import { AuthContext, useAuthContext } from "./context/AuthContext";
 import { LoadingContext } from "./context/useLoadingContext";
 import { ToastContext } from "./context/useToastContext";
-import { AppLanguageContext } from "./context/useAppLanguageContext";
 
 import useAuth from "./custom-hooks/useAuth";
 
@@ -32,9 +30,6 @@ export default function App() {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
-  const authentication = useAuth();
-  const language = useRenderTranslationLabel();
-  const { authUser, logged_in } = authentication.state;
 
   const setRequestLoading = (data) => {
     setLoading(data);
@@ -44,80 +39,23 @@ export default function App() {
     setToast(data);
   };
 
-  useEffect(() => {
-    if (authUser && authUser.user.isNew) {
-      history.push("/profile");
-    } else {
-      if (logged_in) {
-        history.push("/home");
-      }
-    }
-  }, [authUser, logged_in]);
-
-  useEffect(() => {
-    instance.interceptors.request.use((config) => {
-      config = {
-        ...config,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${cookie.get("token")}`,
-        },
-      };
-      return config;
-    });
-    authentication.getUserStorage();
-  }, []);
-
   return (
-    <AppLanguageContext.Provider value={language}>
-      <LoadingContext.Provider value={{ setLoading: setRequestLoading }}>
-        {loading && <Loader />}
-        <ToastContext.Provider value={{ setToast: setResponseToast, toast }}>
-          {toast && <Toast />}
-          <AuthContext.Provider value={authentication}>
-            <div className={`App ${language.appLanguage === 1 ? "rtl" : ""}`}>
-              {!authUser && <Redirect from="/" to="/login" />}
-              {authUser &&
-              location.pathname !== "/login" &&
-              location.pathname !== "/logout" ? (
-                <Header />
-              ) : null}
-              <div className="parent-container">
-                {authUser &&
-                  authUser.user.roleId !== 3 &&
-                  location.pathname !== "/home" &&
-                  location.pathname !== "/logout" && <SideNavbar />}
-                <Switch>
-                  <Route component={Home} path="/home" />
-                </Switch>
-              </div>
-            </div>
-          </AuthContext.Provider>
-        </ToastContext.Provider>
-      </LoadingContext.Provider>
-    </AppLanguageContext.Provider>
-  );
-}
+    <LoadingContext.Provider value={{ setLoading: setRequestLoading }}>
+      {loading && <Loader />}
+      <ToastContext.Provider value={{ setToast: setResponseToast, toast }}>
+        {toast && <Toast />}
 
-function PrivateRoute({ component: Component, ...rest }) {
-  const { state } = useAuthContext();
-  const { authUser } = state;
+        <div className={`App `}>
+          <Header />
+          <div className="parent-container">
+            <SideNavbar />
 
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        authUser ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location },
-            }}
-          />
-        )
-      }
-    />
+            <Switch>
+              <Route component={Home} path="/home" />
+            </Switch>
+          </div>
+        </div>
+      </ToastContext.Provider>
+    </LoadingContext.Provider>
   );
 }
