@@ -16,10 +16,10 @@ export default function Header() {
             setSideBar(!sideBar);
           }}
         ></i>
-        {/* <img className="main-logo" src={header_logo} alt="logo" /> */}
+        <img className="main-logo" src={header_logo} alt="logo" />
       </div>
 
-      <span className="title">FOR ALAA</span>
+      <span className="title">Productivity app.</span>
     </div>
   );
 }

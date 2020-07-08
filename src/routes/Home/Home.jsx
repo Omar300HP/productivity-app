@@ -24,18 +24,5 @@ export default function Home() {
     ]);
   }, []);
 
-  return (
-    <div className="route-container">
-      <h1>
-        <i style={{ color: "red" }} className="flash fas fa-heartbeat"></i>I
-        Love YOU YA ALAA!!!
-        <i style={{ color: "red" }} className="flash fas fa-heartbeat"></i>
-        <h2 style={{ color: "red" }} className="flash">
-          <i style={{ color: "red" }} className="flash fas fa-heartbeat"></i>
-          GEEEEDAN!
-          <i style={{ color: "red" }} className="flash fas fa-heartbeat"></i>
-        </h2>
-      </h1>
-    </div>
-  );
+  return <div className="route-container"></div>;
 }

@@ -1,27 +1,5 @@
 @import "../../styles/color-palette.scss";
 @import "../../styles/templates.scss";
 
-@keyframes animation {
-  0% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
-}
-
 .route-container {
-  h1 {
-    font-size: 120px;
-    margin-top: 25vh;
-  }
-  h2 {
-    font-size: 100px;
-  }
-  .flash {
-    animation-name: animation;
-    animation-duration: 2s;
-    animation-timing-function: ease;
-    animation-iteration-count: infinite;
-  }
 }
