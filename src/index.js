@@ -15,7 +15,7 @@ import "primeicons/primeicons.css";
 serviceWorker.unregister();
 
 const history = createBrowserHistory({
-  basename: "/wodooh/wodooh_frontend",
+  basename: "/productivity_app",
 });
 
 ReactDOM.render(

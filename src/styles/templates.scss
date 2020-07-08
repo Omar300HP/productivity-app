@@ -1,0 +1,586 @@
+@import "./color-palette.scss";
+
+$input_border_radius: 0.25rem;
+$input_border_color: #cccccc;
+$button_transition: 0.5s;
+
+@mixin flex_display(
+  $direction,
+  $justify_content: center,
+  $align_items: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify_content;
+  align-items: $align_items;
+}
+@mixin button_small {
+  width: 120px;
+  height: 38px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 80px;
+    height: 25px;
+    font-size: 12px;
+  }
+}
+@mixin button_large {
+  width: 188px;
+  height: 38px;
+  font-size: 20px;
+
+  border: none;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 105px;
+    height: 30px;
+    font-size: 15px;
+  }
+}
+@mixin blue_button_secondary {
+  color: $grey_6;
+  background-color: $secondary_color;
+  border: 1px solid $secondary_color;
+  &:hover {
+    background-color: #ffffff;
+    color: $secondary_color;
+    border: 1px solid $secondary_color;
+  }
+}
+@mixin blue_white {
+  color: $secondary_color;
+  background-color: white;
+  border: 1px solid $grey_5;
+  box-shadow: 0.5px 0.5px 0 0.5px $grey_5;
+  &:hover {
+    background-color: $secondary_color;
+    color: white;
+    border: 1px solid $secondary_color;
+  }
+}
+@mixin blue_button_primary {
+  color: $grey_6;
+  background-color: $primary_color;
+  border: 1px solid $primary_color;
+  &:hover {
+    background-color: #ffffff;
+    color: $primary_color;
+    border: 1px solid $primary_color;
+  }
+  &:active {
+    border-color: $primary_color;
+  }
+}
+
+.dynamic-array-add-btn {
+  @include button_small();
+  background-color: $primary_color;
+  color: white;
+  border-radius: 4px;
+  margin-right: auto;
+}
+
+.dynamic-array-remove-btn {
+  background-color: white;
+  color: $primary_color;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+.class-chip {
+  &.styles_shadow-primary__2LDux {
+    box-shadow: 0 0 0 0.2em $primary_color;
+  }
+  height: 50px;
+  @include flex_display(row);
+  overflow-x: auto;
+  .row {
+    height: 100%;
+  }
+  @media only screen and (max-width: 1280px) {
+    height: 40px;
+    .styles_chip-input__3aumB .styles_chip__i-PT7 {
+      height: 25px;
+    }
+  }
+}
+
+.hirearchy-tree {
+  list-style-type: none;
+  font-size: 15px;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .hirearchy-children-2 {
+    margin-left: 60px;
+  }
+  ul {
+    margin-left: 10px;
+    margin-top: -10px;
+  }
+
+  li {
+    margin: 0;
+    padding: 0 7px;
+    line-height: 50px;
+    color: $secondary_color;
+    font-weight: bold;
+    border-left: 1px solid $grey_8;
+  }
+  li:last-child {
+    border-left: none;
+    margin-top: -12px;
+  }
+  li:before {
+    position: relative;
+    top: -0.3em;
+    height: 1em;
+    width: 50px;
+    color: white;
+    border-bottom: 1px solid $grey_8;
+    content: "";
+    display: inline-block;
+    left: -7px;
+  }
+  li:last-child:before {
+    line-height: 50px;
+    border-left: 1px solid $grey_8;
+  }
+  .parent:before {
+    content: none;
+  }
+}
+.check-box-group {
+  @include flex_display(row, flex-start);
+  width: 140px;
+  height: 40px;
+  flex-shrink: 0;
+  &.small {
+    width: 90px;
+  }
+  &.large {
+    width: 300px;
+  }
+  .label {
+    margin: 10px;
+    font-size: 13px;
+    color: $grey_8;
+  }
+}
+.check-box {
+  .p-checkbox-box {
+    width: 25px;
+    height: 25px;
+  }
+  .p-checkbox-box.p-highlight {
+    background-color: $primary_color;
+    border-color: $primary_color;
+  }
+  .p-checkbox-box:not(.p-disabled).p-focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: $primary_color;
+  }
+  .p-chkbox {
+  }
+  .p-chkbox-box {
+  }
+  .p-chkbox-icon {
+  }
+  .p-chkbox-label {
+  }
+}
+@mixin wodooh_modal {
+  .modal-body {
+    padding: 0;
+  }
+  .wodooh-modal-header {
+    @include flex_display(row);
+    border-bottom: 2px solid $grey_5;
+    padding: 1rem;
+    .modal-title {
+      color: $secondary_color;
+      font-size: 23px;
+    }
+  }
+  .wodooh-modal-content {
+    padding: 1rem 2rem;
+    .modal-form-label {
+      &.large {
+        width: 120px;
+      }
+    }
+    .box-container {
+      border: 1px solid $grey_5;
+      padding: 0.5rem;
+      margin: 5px 0;
+      .title {
+        color: $alternative_color_2;
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .check-boxes-container {
+        @include flex_display(row, start);
+        justify-items: start;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        padding-right: 100px;
+      }
+      .box-btn {
+        @include flex_display(row, flex-end);
+        color: $primary_color;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+  .wodooh-modal-footer {
+    @include flex_display(row, flex-end);
+    padding: 1rem;
+  }
+  @media only screen and (max-width: 1280px) {
+    .wodooh-modal-header {
+      .modal-title {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.modal-form-label {
+  color: $grey_8;
+  border-right: 1px solid $grey_8;
+  font-size: 16px;
+  padding-right: 5px;
+  &.extra-large {
+    margin: 15px 0;
+    width: 150px;
+  }
+
+  &.small {
+    margin: 4.5px 0;
+    width: 40px;
+  }
+  &.large {
+    margin: 15px 0;
+    width: 90px;
+  }
+  &.largeX {
+    margin: 15px 0;
+    width: 90px;
+  }
+  &.largeXL {
+    margin: 15px 0;
+    width: 135px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+.prime-select {
+  margin: 10px;
+  width: 285px;
+  &.large {
+    width: 395px;
+  }
+  &.small {
+    width: 175px;
+  }
+  &.normal {
+    width: 100%;
+    margin: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+  ::-webkit-scrollbar-button:single-button {
+    height: 10px;
+    width: 10px;
+  }
+  ::-webkit-scrollbar-button:single-button:vertical:decrement {
+    // background: url("../images/scroll-up.png") no-repeat center center;
+
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+  }
+
+  ::-webkit-scrollbar-button:single-button:vertical:increment {
+    // background: url("../images/scroll-down.png") no-repeat center center;
+
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+  }
+  .p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: 0 0 0 0.2em $primary_color;
+  }
+  .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight,
+  body .p-dropdown-panel .p-dropdown-items .p-dropdown-item-group.p-highlight {
+    background-color: $primary_color;
+  }
+}
+.modal-table {
+  overflow-y: auto;
+  height: 340px;
+  *:focus {
+    outline: $primary_color;
+  }
+  .p-datatable .p-datatable-thead tr th {
+    font-size: 13px;
+    color: white;
+    background-color: $primary_color;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  tr:nth-child(even) {
+    background: white !important;
+  }
+  tr:nth-child(odd) {
+    background: $primary_color;
+  }
+
+  tbody .p-highlight {
+    background-color: $secondary_color !important;
+    border-color: $secondary_color;
+  }
+  .p-highlight {
+    background-color: $secondary_color !important;
+  }
+  .p-paginator-page {
+  }
+  .p-paginator-next,
+  .p-paginator-prev {
+  }
+  .p-paginator-last,
+  .p-paginator-first {
+  }
+  .p-datatable-footer {
+  }
+}
+
+.switch {
+  &.p-inputswitch.p-inputswitch-focus .p-inputswitch-slider {
+    box-shadow: none;
+  }
+  &.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background-color: $primary_color;
+  }
+}
+.modal-form-preview-value {
+  color: $grey_8;
+  font-size: 16px;
+  width: 100px;
+  height: 24px;
+  padding-left: 5px;
+  overflow: hidden;
+  &.large {
+    width: fit-content;
+  }
+}
+
+.ok-btn {
+  @include button_small;
+  @include blue_button_secondary;
+}
+.large-ok-btn {
+  @include button_large;
+  @include blue_button_secondary;
+}
+
+.large-preview-btn {
+  @include button_large;
+  @include blue_button_primary;
+}
+.large-cancel-btn {
+  @include button_large;
+  @include blue_white;
+}
+.upload-btn {
+  @include button_large;
+  @include blue_button_secondary;
+  border-radius: 1rem;
+  font-size: 15px;
+}
+.auth-btn {
+  @include button_small;
+  @include blue_button_primary;
+  margin: 0 10px;
+}
+.close-icon {
+  cursor: pointer;
+  color: $secondary_color;
+  font-size: 35px;
+  margin-right: 0.5rem;
+  margin-left: auto;
+}
+
+//prime react input styling
+body .p-inputtext {
+  border-color: hsl(0, 0%, 80%);
+}
+
+body .p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 2px $primary_color;
+  border: none !important;
+}
+
+body .p-inputtext:enabled:hover {
+  border-color: $primary_color;
+}
+
+//prime react checkbox styling
+body .p-checkbox .p-checkbox-box {
+  border-color: hsl(0, 0%, 80%);
+}
+
+body .p-checkbox .p-checkbox-box:not(.p-disabled):hover {
+  border-color: $primary_color;
+}
+
+body .p-checkbox .p-checkbox-box.p-highlight {
+  border-color: $primary_color;
+  background-color: $primary_color;
+}
+
+body .p-checkbox .p-checkbox-box.p-highlight:not(.p-disabled):hover {
+  border-color: $primary_color;
+  background-color: $primary_color;
+}
+
+body .p-checkbox .p-checkbox-box:not(.p-disabled).p-focus {
+  box-shadow: none;
+  border-color: hsl(0, 0%, 80%);
+}
+
+body .p-checkbox-label {
+  margin: 0 8px 0px 0;
+}
+
+/* scrollbar customization */
+::-webkit-scrollbar {
+  width: 25px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $primary_color;
+  border: 1px solid #999999;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $primary_color;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e8e8e8;
+}
+
+::-webkit-scrollbar-button:single-button {
+  background-color: $primary_color;
+  background-size: cover;
+  display: block;
+  border-style: solid;
+  height: 30px;
+  width: 30px;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  // background: url("../images/scroll-up.png") no-repeat center center;
+  background-color: $primary_color;
+  background-size: 18px 18px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #999999;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  // background: url("../images/scroll-down.png") no-repeat center center;
+  background-color: $primary_color;
+  background-size: 18px 18px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #999999;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover,
+::-webkit-scrollbar-button:vertical:single-button:increment:hover {
+  background-color: $primary_color;
+}
+
+// Resolution: 1280 * 720
+
+@media only screen and (max-width: 1280px) {
+  /* scrollbar customization */
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  .dynamic-array-remove-btn {
+    font-size: 1.2rem;
+  }
+  .close-icon {
+    font-size: 25px;
+  }
+  .modal-form-label {
+    font-size: 12px;
+  }
+  .modal-form-preview-value {
+    font-size: 12px;
+  }
+  .hirearchy-tree {
+    font-size: 12px;
+    li:last-child {
+      margin-top: -14px;
+    }
+  }
+  .modal-table {
+    .p-datatable .p-datatable-thead tr th {
+      font-size: 11px;
+    }
+  }
+  .prime-select {
+    font-size: 12px;
+    * {
+      font-size: 12px;
+    }
+  }
+  .check-box {
+    .p-checkbox-box {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .check-box-group {
+    font-size: 11px;
+    width: 150px;
+    height: 25px;
+    margin-top: 5px;
+    .label {
+      margin: 5px;
+      font-size: 10px;
+    }
+
+    &.small {
+      width: 90px;
+    }
+    &.large {
+      width: 300px;
+    }
+  }
+}

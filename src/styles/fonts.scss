@@ -1,0 +1,47 @@
+@font-face {
+  font-family: Montserrat;
+  src: url("./fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: HelveticaArabicLight;
+  src: url("./fonts/HelveticaNeueLTArabic-Light.ttf");
+}
+
+// font awesome 5
+@font-face {
+  font-family: "Font Awesome 5 Brands";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("./fonts/Font\ Awesome\ 5\ Brands-Regular-400.otf");
+}
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto;
+  src: url("./fonts/Font\ Awesome\ 5\ Free-Regular-400.otf");
+}
+.far {
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("./fonts/Font\ Awesome\ 5\ Free-Solid-900.otf");
+}
+.fa,
+.far,
+.fas {
+  font-family: "Font Awesome 5 Free";
+}
+.fa,
+.fas {
+  font-weight: 900;
+}

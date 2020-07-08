@@ -14,8 +14,6 @@ import Toast from "./components/Toast";
 import Header from "./components/Header/Header";
 import SideNavbar from "./components/SideNavbar/SideNavbar";
 
-import Login from "./routes/Login/Login";
-import Logout from "./routes/Logout/Logout";
 import Home from "./routes/Home/Home";
 
 import { AuthContext, useAuthContext } from "./context/AuthContext";
@@ -90,9 +88,7 @@ export default function App() {
                   location.pathname !== "/home" &&
                   location.pathname !== "/logout" && <SideNavbar />}
                 <Switch>
-                  <Route component={Login} path="/login" />
-                  <PrivateRoute component={Home} path="/home" />
-                  <PrivateRoute path="/logout" component={Logout} />
+                  <Route component={Home} path="/home" />
                 </Switch>
               </div>
             </div>
