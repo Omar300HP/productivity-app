@@ -1,0 +1,133 @@
+@import "../../styles/color-palette.scss";
+@import "../../styles/templates.scss";
+
+.side-navbar {
+  float: left;
+  height: 95%;
+  padding: 4rem 0;
+  margin-top: 20px;
+  border-right: 1px $grey_4 solid;
+  text-align: left;
+  transition: 0.5s width;
+  overflow-x: hidden;
+  @include flex_display(column, flex-start, flex-start);
+  position: relative;
+  overflow: hidden;
+
+  &.expanded {
+    width: 11%;
+  }
+
+  &.collapsed {
+    width: 4%;
+  }
+
+  .side-navbar-btn {
+    position: absolute;
+    top: 10px;
+    right: 22px;
+    font-size: 1.4em;
+    color: $primary_color;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transform: rotate(-90deg);
+    transition: 0.5s;
+
+    &.expanded {
+      transform: rotate(0deg);
+      transition: 0.5s;
+    }
+
+    &:hover {
+      color: $primary_color;
+    }
+    &:focus {
+      outline: 0 none;
+    }
+  }
+
+  .side-navbar-link {
+    margin: 0px 25px 0px 0px;
+    padding: 15px 20px;
+    position: relative;
+    color: $grey_2;
+    height: 50px;
+    width: 100%;
+
+    i {
+      position: absolute;
+      padding: 2px;
+      margin-right: 2rem;
+      vertical-align: middle;
+    }
+
+    span {
+      position: absolute;
+      left: 3rem;
+      vertical-align: middle;
+    }
+
+    &:active {
+      background-color: $primary_color;
+      color: $primary_color;
+    }
+
+    &:hover,
+    &.active {
+      border-left: 5px solid $primary_color;
+      color: $primary_color;
+      background-color: $grey_6;
+      transition: 0.3s;
+    }
+  }
+
+  .powerdBy {
+    margin-left: 15px;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+// Resolution: 1280 * 720
+
+@media only screen and (max-width: 1280px) {
+  .side-navbar {
+    float: left;
+    height: 95%;
+    padding: 25px 0;
+    margin-top: 10px;
+
+    .side-navbar-btn {
+      top: 0px;
+      right: 10px;
+      font-size: 1rem;
+    }
+
+    .side-navbar-link {
+      margin: 0px 15px 0px 0px;
+      padding: 8px 13px;
+      height: 30px;
+
+      i {
+        font-size: 0.8rem;
+        position: absolute;
+        padding: 1px;
+        margin-right: 1rem;
+        vertical-align: middle;
+      }
+
+      span {
+        font-size: 0.7rem;
+        left: 2.5rem;
+      }
+    }
+  }
+
+  .powerdBy {
+    margin-left: 15px;
+    position: absolute;
+    bottom: 0;
+    font-size: 0.6rem;
+  }
+}

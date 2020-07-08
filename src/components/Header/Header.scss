@@ -1,0 +1,149 @@
+@import "../../styles/color-palette.scss";
+@import "../../styles/templates.scss";
+@import "../../styles/fonts.scss";
+
+.header {
+  height: 60px;
+  width: 100%;
+  background: $primary_color;
+  padding: 0;
+  .header-panel {
+    width: 100%;
+    padding: 12px;
+    margin-right: 20px;
+    @include flex_display(row, flex-end);
+
+    .ramz-logo {
+      height: 40px;
+      margin-right: auto;
+      margin-left: 4rem;
+    }
+
+    li {
+      display: inline-block;
+      padding: 0 20px;
+    }
+
+    .header-item {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary_color;
+        transition: 0.5s;
+      }
+
+      i {
+        margin-right: 10px;
+        padding: 8px;
+        color: white;
+        background-color: $primary_color;
+        font-size: 1.2em;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .divider {
+    height: 30px;
+    border-right: 1px solid;
+    opacity: 50%;
+    color: $primary_color;
+  }
+
+  #settings-button,
+  #language-button {
+    background-color: $primary_color;
+    color: $primary_color;
+    border: none;
+    height: 30px;
+    width: 30px;
+
+    &:hover {
+      background-color: $primary_color;
+      color: $primary_color;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      transition: 0.5s;
+    }
+  }
+
+  #dropdown-icon {
+    background-color: $primary_color;
+    color: $primary_color;
+    height: 30px;
+    width: 30px;
+    margin: 0;
+  }
+}
+
+.logout-dropdown {
+  position: absolute;
+  top: 64px;
+  right: 12px;
+  z-index: 10;
+}
+
+.logout-btn {
+  background-color: $primary_color;
+  border: $primary_color;
+}
+
+// Resolution: 1280 * 720
+
+@media only screen and (max-width: 1280px) {
+  .header {
+    font-size: 0.8rem;
+    height: 40px;
+    .header-panel {
+      padding: 8px;
+      margin-right: 15px;
+
+      li {
+        padding: 0 15px;
+      }
+
+      .header-item {
+        i {
+          margin-right: 6px;
+          padding: 6px;
+          font-size: 0.7em;
+        }
+      }
+
+      .ramz-logo {
+        height: 20px;
+        margin-right: auto;
+        margin-left: 4rem;
+      }
+    }
+
+    .divider {
+      height: 20px;
+    }
+
+    #settings-button {
+      height: 20px;
+      width: 20px;
+
+      &:hover {
+        height: 20px;
+        width: 20px;
+      }
+    }
+
+    #dropdown-icon {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  .logout-btn {
+    position: absolute;
+    right: 10px;
+    top: -22px;
+    width: 80px;
+    font-size: 0.7rem;
+  }
+}
