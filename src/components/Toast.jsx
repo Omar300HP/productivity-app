@@ -1,38 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useToastContext } from "../context/useToastContext";
+import { Growl } from "primereact/growl";
+
+// severity : success || info || warn || error || info
+// { severity: "info", summary: "Message 3", detail: "PrimeFaces rocks" , sticky:false , life:3000},
 
 export default function Toast() {
-  const { setToast, toast } = useToastContext();
-  const [countdown, setCountdown] = useState(0);
+  const { resetToasts, toasts } = useToastContext();
 
-  useEffect(() => {
-    let timerId = setInterval(() => countdownTimer(), 1000);
+  let growl = useRef(null);
 
-    if (countdown > 3) {
-      setToast(null);
-    }
-
-    return function cleanup() {
-      clearInterval(timerId);
-    };
-  });
-
-  const countdownTimer = () => {
-    const c = countdown + 1;
-    setCountdown(c);
+  const showMultiple = (toastQueue) => {
+    growl.current.show(toastQueue);
   };
 
+  useEffect(() => {
+    if (toasts && toasts.length > 0) {
+      let toastQueue = [...toasts];
+      showMultiple(toastQueue);
+      resetToasts();
+    }
+  }, [toasts]);
+
   return (
-    <div
-      className={`toastram ${toast.type === "success" ? "success" : "error"}`}
-      onClick={() => setToast(false)}
-    >
-      <i
-        className={`fas ${
-          toast.type === "success" ? "fa-check" : "fa-times"
-        } mr-2`}
-      />
-      {toast.label}
-    </div>
+    <Growl
+      position="bottomright"
+      baseZIndex={99999}
+      ref={growl}
+      style={{ width: "21em" }}
+    />
   );
 }

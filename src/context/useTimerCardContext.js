@@ -2,8 +2,8 @@
 
 import { createContext, useContext } from "react";
 
-export const AppLanguageContext = createContext();
+export const TimerCardContext = createContext();
 
-export function useAppLanguageContext() {
-  return useContext(AppLanguageContext);
+export function useTimerCardContext() {
+  return useContext(TimerCardContext);
 }

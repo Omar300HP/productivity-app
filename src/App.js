@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import {
   Route,
   Switch,
-  Redirect,
-  useLocation,
-  useHistory,
+  // Redirect,
+  // useLocation,
+  // useHistory,
 } from "react-router-dom";
 
 import Loader from "./components/Loader";
@@ -18,43 +18,42 @@ import Home from "./routes/Home/Home";
 
 import { LoadingContext } from "./context/useLoadingContext";
 import { ToastContext } from "./context/useToastContext";
+import { SideBarContext } from "./context/useSideBarContext";
+import { TimerCardContext } from "./context/useTimerCardContext";
 
-import useAuth from "./custom-hooks/useAuth";
-
-import { instance } from "./components/API";
-import cookie from "js-cookie";
-import useRenderTranslationLabel from "./custom-hooks/useRenderTranslationLabels";
+import useToast from "./custom-hooks/useToast";
 
 export default function App() {
-  const location = useLocation();
-  const history = useHistory();
+  // const location = useLocation();
+  // const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState(null);
+  const [sideBar, setSideBar] = useState(true);
+  const toaster = useToast();
 
   const setRequestLoading = (data) => {
     setLoading(data);
   };
 
-  const setResponseToast = (data) => {
-    setToast(data);
-  };
-
   return (
     <LoadingContext.Provider value={{ setLoading: setRequestLoading }}>
       {loading && <Loader />}
-      <ToastContext.Provider value={{ setToast: setResponseToast, toast }}>
-        {toast && <Toast />}
-
-        <div className={`App `}>
-          <Header />
-          <div className="parent-container">
+      <ToastContext.Provider value={toaster}>
+        <SideBarContext.Provider
+          value={{ setSideBar: setSideBar, sideBar: sideBar }}
+        >
+          <Toast />
+          <div className={`App`}>
+            <Header />
             <SideNavbar />
-
-            <Switch>
-              <Route component={Home} path="/home" />
-            </Switch>
+            <div
+              className={`parent-container ${sideBar ? "opened" : "closed"}`}
+            >
+              <Switch>
+                <Route component={Home} path="/" />
+              </Switch>
+            </div>
           </div>
-        </div>
+        </SideBarContext.Provider>
       </ToastContext.Provider>
     </LoadingContext.Provider>
   );

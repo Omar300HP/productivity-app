@@ -9,8 +9,8 @@ export const instance = axios.create({
   },
 });
 
-export const APILink = "http://competition-admin.swisodev.com/backend/api/";
-export const MEDIALink = "http://competition-admin.swisodev.com/backend/static";
+export const APILink = "http://";
+export const MEDIALink = "http://";
 
 export const APICalls = {
   getDevices: function (params) {

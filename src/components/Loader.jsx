@@ -2,12 +2,8 @@
 
 import React from "react";
 
-// import loader from "../images/preloader-100.gif";
+import loader from "../images/preloader.gif";
 
 export default function Loader() {
-  return (
-    <div className="loading-spinner">
-      {/* <img src={loader} alt="loader" /> */}
-    </div>
-  );
+  return <div className="loading-spinner"></div>;
 }
